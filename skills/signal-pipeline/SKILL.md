@@ -44,6 +44,32 @@ For each symbol with a buy or sell signal:
 3. Suggest rule adjustments based on backtest findings (e.g., adjust RSI thresholds, change weights)
 4. Re-run the pipeline with updated rules
 
+## Telegram Setup
+
+To configure Telegram notifications:
+1. Open Telegram, search for **@BotFather**, send `/newbot`, follow prompts to get your **bot token**
+2. Create a Telegram group/channel for signals, add your bot to it
+3. To get the **chat_id**: send a message in the group, then visit `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates` — look for `"chat":{"id":-XXXXXXXXX}`
+4. Add both values to `signals.json`:
+   ```json
+   "telegram": {
+     "bot_token": "123456:ABC-DEF...",
+     "chat_id": "-100XXXXXXXXX"
+   }
+   ```
+5. Test with `telegram_status` then `telegram_send` with a test message
+
+## Automated Scheduling
+
+Run signal scans automatically on a schedule:
+1. `bash scripts/setup-scheduler.sh` — installs cron (Linux) or launchd (macOS)
+2. `bash scripts/setup-scheduler.sh --hours 2` — customize interval
+3. `bash scripts/setup-scheduler.sh --uninstall` — remove scheduled task
+4. Manual test: `bash scripts/signal-cron.sh`
+5. Logs saved to `~/.tradingview-mcp/logs/`
+
+Note: TradingView Desktop must be running for scheduled scans to work. If it's not running, the cron job exits gracefully without errors.
+
 ## Quick Pipeline (All-in-One)
 
 For a fast daily routine:
