@@ -15,6 +15,9 @@ import { registerUiTools } from "./tools/ui.js";
 import { registerPaneTools } from "./tools/pane.js";
 import { registerTabTools } from "./tools/tab.js";
 import { registerMorningTools } from "./tools/morning.js";
+import { registerSignalTools } from "./tools/signals.js";
+import { registerDemoTools } from "./tools/demo.js";
+import { registerTelegramTools } from "./tools/telegram.js";
 
 const server = new McpServer(
   {
@@ -61,6 +64,9 @@ Alerts: alert_create, alert_list, alert_delete
 Launch: tv_launch → auto-detect and start TradingView with CDP on any platform
 Panes: pane_list, pane_set_layout (s, 2h, 2v, 4, 6, 8), pane_focus, pane_set_symbol
 Tabs: tab_list, tab_new, tab_close, tab_switch
+Signals: signal_scan → evaluate watchlist against configurable rules, signal_get, signal_history
+Demo: demo_backtest → replay-based backtesting with signal rules, demo_results
+Telegram: telegram_send, telegram_send_signals → push signals to Telegram, telegram_status
 
 CONTEXT MANAGEMENT:
 - ALWAYS use summary=true on data_get_ohlcv
@@ -87,6 +93,9 @@ registerUiTools(server);
 registerPaneTools(server);
 registerTabTools(server);
 registerMorningTools(server);
+registerSignalTools(server);
+registerDemoTools(server);
+registerTelegramTools(server);
 
 // Startup notice (stderr so it doesn't interfere with MCP stdio protocol)
 process.stderr.write(

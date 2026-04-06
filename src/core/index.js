@@ -14,3 +14,6 @@ export * as batch from './batch.js';
 export * as watchlist from './watchlist.js';
 export * as indicators from './indicators.js';
 export * as ui from './ui.js';
+export * as signals from './signals.js';
+export * as demo from './demo.js';
+export * as telegram from './telegram.js';

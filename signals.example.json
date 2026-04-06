@@ -1,0 +1,74 @@
+{
+  "watchlist": ["BTCUSD", "ETHUSD", "SOLUSD"],
+  "default_timeframe": "240",
+
+  "signal_rules": {
+    "buy": [
+      {
+        "indicator": "Relative Strength Index",
+        "field": "RSI",
+        "condition": "less_than",
+        "value": 30,
+        "weight": 40,
+        "label": "RSI oversold"
+      },
+      {
+        "indicator": "Moving Average Exponential",
+        "field": "EMA",
+        "condition": "price_above",
+        "value": null,
+        "weight": 30,
+        "label": "Price above EMA"
+      },
+      {
+        "indicator": "MACD",
+        "field": "Histogram",
+        "condition": "greater_than",
+        "value": 0,
+        "weight": 30,
+        "label": "MACD histogram positive"
+      }
+    ],
+    "sell": [
+      {
+        "indicator": "Relative Strength Index",
+        "field": "RSI",
+        "condition": "greater_than",
+        "value": 70,
+        "weight": 40,
+        "label": "RSI overbought"
+      },
+      {
+        "indicator": "Moving Average Exponential",
+        "field": "EMA",
+        "condition": "price_below",
+        "value": null,
+        "weight": 30,
+        "label": "Price below EMA"
+      },
+      {
+        "indicator": "MACD",
+        "field": "Histogram",
+        "condition": "less_than",
+        "value": 0,
+        "weight": 30,
+        "label": "MACD histogram negative"
+      }
+    ],
+    "min_score": 60,
+    "min_rules_matched": 2
+  },
+
+  "telegram": {
+    "bot_token": "YOUR_BOT_TOKEN_HERE",
+    "chat_id": "YOUR_CHAT_ID_HERE",
+    "auto_send": false,
+    "message_format": "markdown"
+  },
+
+  "demo": {
+    "default_step_count": 100,
+    "step_delay_ms": 200,
+    "auto_trade": true
+  }
+}

@@ -26,6 +26,9 @@ import "./commands/pane.js";
 import "./commands/tab.js";
 import "./commands/stream.js";
 import "./commands/morning.js";
+import "./commands/signals.js";
+import "./commands/demo.js";
+import "./commands/telegram.js";
 
 // Run
 import { run } from "./router.js";
